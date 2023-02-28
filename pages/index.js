@@ -1,6 +1,8 @@
 import React from 'react'
+import { Banner } from '../components'
+import { client } from '../lib/client'
 
-const index = () => {
+const Home = () => {
   return (
     <div>
       <div className='products-heading'>
@@ -8,11 +10,24 @@ const index = () => {
         <p>Books of different genres</p>
       </div>
 
+      {/* Loop through products */}
       <div className='products-container'>
         {['Insert Product','Insert Product'].map((product) => product)}
       </div>
     </div>
   )
+};
+
+export const getServerSideProps = async () => {
+  const query = '*[_type == "products]'
+  const products = await client.fetch(query)
+
+  const bannerQuery = '*[_type == "banner]'
+  const bannerData = await client.fetch(bannerQuery)
+
+  return {
+    props: { products, bannerData }
+  }
 }
 
 export default index
