@@ -2,9 +2,11 @@ import React from 'react'
 import { Banner } from '../components'
 import { client } from '../lib/client'
 
-const Home = () => {
+const Home = ({ products, bannerData} ) => {
   return (
     <div>
+      <Banner banner={console.log(bannerData)} />
+
       <div className='products-heading'>
         <h2>Best Selling Books</h2>
         <p>Books of different genres</p>
@@ -18,11 +20,11 @@ const Home = () => {
   )
 };
 
-export const getServerSideProps = async () => {
-  const query = '*[_type == "products]'
+  export const getServerSideProps = async () => {
+  const query = '*[_type == "product"]'
   const products = await client.fetch(query)
 
-  const bannerQuery = '*[_type == "banner]'
+  const bannerQuery = '*[_type == "banner"]'
   const bannerData = await client.fetch(bannerQuery)
 
   return {
@@ -30,4 +32,4 @@ export const getServerSideProps = async () => {
   }
 }
 
-export default index
+export default Home
