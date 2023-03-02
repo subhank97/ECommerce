@@ -7,16 +7,17 @@ const Banner = ({ banner }) => {
     <div className='banner-container'>
         <div>
             <p className='banner-product'>{banner.smallText}</p>
-            <h3>{banner.midText}</h3>
+            {/* <h3>{banner.midText}</h3> */}
+            <h1>{banner.largeText}</h1>
             <img src={urlFor(banner.image)} alt='book' className='banner-image'/>
 
             <div>
-                <Link href='/'>
-                    <button type='button'>{banner.button}</button>
+                <Link href='/product'>
+                    <button type='button'>{banner.buttonText}</button>
                 </Link>
                 <div className='description'>
-                    <h5>Description</h5>
-                    <p>{banner.description}</p>
+                    <h5>{banner.description}</h5>
+                    <p></p>
                 </div>
             </div>
         </div>
