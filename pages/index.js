@@ -1,8 +1,9 @@
 import React from 'react'
-import { Banner } from '../components'
+import { Banner, Product } from '../components'
 import { client } from '../lib/client'
 
 const Home = ({ products, bannerData} ) => {
+  console.log(products)
   return (
     <div>
       <Banner banner={bannerData[0]} />
@@ -14,7 +15,9 @@ const Home = ({ products, bannerData} ) => {
 
       {/* Loop through products */}
       <div className='products-container'>
-        {['Insert Product','Insert Product'].map((product) => product)}
+        {products?.map((product) => <Product 
+        key={product.id}
+        product={product} />)}
       </div>
     </div>
   )
