@@ -9,7 +9,7 @@ const Banner = ({ banner }) => {
             <p className='banner-product'>{banner.smallText}</p>
             {/* <h3>{banner.midText}</h3> */}
             <h1>{banner.largeText}</h1>
-            <img src={urlFor(banner.image)} alt='book' className='banner-image'/>
+            <img src={urlFor(banner.image)} alt='shoe' className='banner-image'/>
 
             <div>
                 <Link href='/product'>

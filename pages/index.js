@@ -1,5 +1,5 @@
 import React from 'react'
-import { Banner, Footer, Product } from '../components'
+import { Banner, FooterBanner, Product } from '../components'
 import { client } from '../lib/client'
 
 const Home = ({ products, bannerData} ) => {
@@ -9,8 +9,8 @@ const Home = ({ products, bannerData} ) => {
       <Banner banner={bannerData[0]} />
 
       <div className='products-heading'>
-        <h2>Best Selling Books</h2>
-        <p>Books of different genres</p>
+        <h2>Best Selling Shoes</h2>
+        <p>Shoes of all brands</p>
       </div>
 
       {/* Loop through products */}
@@ -20,7 +20,7 @@ const Home = ({ products, bannerData} ) => {
         product={product} />)}
       </div>
 
-      <Footer footer={bannerData[0]}/>
+      <FooterBanner footer={bannerData[0]}/>
     </div>
   )
 };

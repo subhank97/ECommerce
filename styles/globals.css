@@ -6,30 +6,18 @@ body, * {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   box-sizing: border-box;
 }
-.products-heading {
-  text-align: center;
-  margin: 40px 0px;
- color: #0a6233;
-}
-.products-heading h2 {
-  font-size: 40px;
-  font-weight: 800;
-}
-.products-heading p {
-  font-size: 16px;
-  font-weight: 200;
-}
-.products-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
+.main-container{
+  max-width: 1400px; 
+  margin: auto;
   width: 100%;
 }
+.layout{
+  padding: 10px;
+}
 .banner-container {
-  padding: 60px 40px;
-  background-color: #92a396;
+  padding: 60px;
+  border-radius: 20px;
+  background-color: #e2e1e1;
   position: relative;
   height: 280px;
   line-height: 0.5; 
@@ -61,10 +49,10 @@ body, * {
 }
 .banner-image {
   position: absolute;
-  top: 17%;
-  right:17%;
-  width: 450px;
-  height: 150px;
+  top: 5%;
+  right:7%;
+  width: 400px;
+  height: 250px;
 }
 .description {
   position: absolute;
@@ -82,7 +70,29 @@ body, * {
   font-size: 16px;
   align-self: flex-end;
 }
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+  width: 100%;
+}
+.products-heading {
+  text-align: center;
+  margin: 40px 0px;
+  color: #0a6233;
+}
+.products-heading h2 {
+  font-size: 40px;
+  font-weight: 800;
+}
+.products-heading p {
+  font-size: 16px;
+  font-weight: 200;
+}
 .product-card{
+  width: 150px;
   cursor: pointer;
   transform: scale(1, 1);
   transition: transform 0.5s ease;
@@ -92,10 +102,10 @@ body, * {
    transform: scale(1.1,1.1)
  }
  .product-image{
-   border-radius: 15px;
+  border-radius: 10px;
   background-color: #ebebeb;
-   transform: scale(1, 1);
-   transition: transform 0.5s ease;
+  transform: scale(1, 1);
+  transition: transform 0.5s ease;
  }
  .product-title{
    font-weight: 500;
@@ -107,13 +117,14 @@ body, * {
  }
  .footer-container{
   padding: 25px 40px;
-  background-color: #92a396;
+  background-color: #e2e1e1;
   position: relative;
   height: 250px;
   line-height: 1; 
   color: white;
   width: 100%;
   margin-top: 120px;
+  border-radius: 20px;
 }
 .f-description{
   display: flex ;
@@ -129,10 +140,10 @@ body, * {
 }
 .footer-image{
   position: absolute;
-  top: 17%;
-  right:17%;
-  width: 450px;
-  height: 150px;
+  top: 5%;
+  right:7%;
+  width: 400px;
+  height: 250px;
 }
 .banner-desc .right{
   line-height: 1.4;
