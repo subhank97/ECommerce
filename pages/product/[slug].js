@@ -7,10 +7,20 @@ const ProductDetails = ({ product, products }) => {
 
   return (
     <div>
-        <div className='product-deatils-container'>
+        <div className='product-details-container'>
             <div>
                 <div className='image-container'>
-                    <img src={urlFor(image[0])} alt='shoe-style' />
+                    <img src={urlFor(image[0])} alt='shoe-style' width={400} height={200}/>
+                </div>
+                <div className='product-description'>
+                    <h1>{name}</h1>
+                    <h4>Description:</h4>
+                    <p>{details}</p>
+                    <p className='product-price'>${price}</p>
+                    <div className='button'>
+                        <button type='button' className='add-to-cart'>Add to Cart</button>
+                        <button type='button' className='buy-now'>Buy Now</button>
+                    </div>
                 </div>
             </div>
         </div>
