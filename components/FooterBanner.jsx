@@ -3,7 +3,7 @@ import React from 'react'
 
 const FooterBanner = ({ footer }) => {
   return (
-    <div className='footer-container'>
+    <div className='footer-banner-container'>
         <div className='f-description'>
             <div className='left'>
                 <p>{footer.discount}</p>
