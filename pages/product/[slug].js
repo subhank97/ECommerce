@@ -1,6 +1,7 @@
 import React from 'react'
 import { client, urlFor } from '@/lib/client'
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { AiFillStar, AiOutlineMinus, AiOutlinePlus, AiOutlineStar } from 'react-icons/ai';
+import { Product } from '@/components';
 
 const ProductDetails = ({ product, products }) => {
 
@@ -9,9 +10,8 @@ const ProductDetails = ({ product, products }) => {
   return (
     <div>
         <div className='product-details-container'>
-            <div>
                 <div className='image-container'>
-                    <img src={urlFor(image[0])} alt='shoe-style' width={400} height={200}/>
+                    <img className="product-detail-image" src={urlFor(image && image[0])} alt='shoe-style'/>
                 </div>
                 <div className='product-description'>
                     <h1>{name}</h1>
@@ -25,13 +25,30 @@ const ProductDetails = ({ product, products }) => {
                     <h4>Description:</h4>
                     <p>{details}</p>
                     <p className='product-price'>${price}</p>
-                    <div className='button'>
+                    <div className='product-quantity'>
+                        <h3>Quantity:</h3>
+                        <span className='minus' onClick=''><AiOutlineMinus /></span>
+                        <span className='number' onClick=''>0</span>
+                        <span className='plus' onClick=''><AiOutlinePlus /></span>
+                    </div>
+                    <div className='buttons'>
                         <button type='button' className='add-to-cart'>Add to Cart</button>
                         <button type='button' className='buy-now'>Buy Now</button>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <div className='maylike-products-wrapper'>
+              <h2>You may also Like</h2>
+              <div className='marquee'>
+                <div className='maylike-products-container track'>
+                  {products.map((item) => (
+                    <Product key={item._id}
+                             product={item}/>
+                  ))}
+                </div>
+              </div>
+            </div>
     </div>
   )
 }
