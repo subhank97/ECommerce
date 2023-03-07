@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext, useContext } from "react";
 import toast from 'react-hot-toast'
 
-const Context = useContext()
+const Context = createContext()
 
 export const StateContext = ({ children }) => {
     const [showCart, setShowCart] = useState(false);
@@ -11,10 +11,10 @@ export const StateContext = ({ children }) => {
     const [quantity, setQuantity] = useState(1);
 
     const increaseQuantity = () => {
-        setQuantity((qty) => qty + 1)  
+        setQuantity((prvQty) => prvQty + 1)  
     }
     const decreaseQuantity = () => {
-        setQuantity((qty) => qty - 1)  
+        setQuantity((prvQty) => prvQty - 1)  
     }
 
     return (
