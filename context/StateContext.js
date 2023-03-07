@@ -40,7 +40,7 @@ export const StateContext = ({ children }) => {
     }
 
     return (
-        <Context.Provider value={{showCart, cartItems, totalPrice, toalQuantities, quantity, increaseQuantity,
+        <Context.Provider value={{showCart, setShowCart, cartItems, totalPrice, toalQuantities, quantity, increaseQuantity,
                                   decreaseQuantity, onAddToCart}}>
             {children}
         </Context.Provider>
