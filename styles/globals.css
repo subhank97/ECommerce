@@ -414,3 +414,29 @@ body, * {
   margin-left: 10px;
   color: #f02d34;
 }
+.empty-cart{
+  margin:40px;
+  text-align:center;
+}
+.empty-cart h3{
+  font-weight: 600;
+  font-size: 20px;
+}
+.continue-shopping-button{
+  width: 100%;
+  max-width: 250px;
+  padding: 5px 12px;
+  border-radius: 15px;
+  border: none;
+  font-size: 20px;
+  margin-top: 25px;
+  text-transform: uppercase;
+  background-color: #6b6b6b;
+  color: #fff;
+  cursor: pointer;
+  transform: scale(1, 1);
+  transition: transform 0.5s ease;
+}
+.continue-shopping-button:hover{
+  transform: scale(1.1,1.1);
+}
