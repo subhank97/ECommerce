@@ -8,7 +8,7 @@ const ProductDetails = ({ product, products }) => {
 
     const {image, name, price, details} = product;
     const [index, setIndex] = useState(0)
-    const {increaseQuantity, decreaseQuantity, quantity} = useStateContext();
+    const {increaseQuantity, decreaseQuantity, quantity, onAddToCart} = useStateContext();
 
   return (
     <div>
@@ -42,7 +42,7 @@ const ProductDetails = ({ product, products }) => {
                         <span className='plus' onClick={increaseQuantity}><AiOutlinePlus /></span>
                     </div>
                     <div className='buttons'>
-                        <button type='button' className='add-to-cart'>Add to Cart</button>
+                        <button type='button' className='add-to-cart' onClick={() => onAddToCart(product, quantity)}>Add to Cart</button>
                         <button type='button' className='buy-now'>Buy Now</button>
                     </div>
                 </div>
