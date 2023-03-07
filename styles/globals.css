@@ -71,7 +71,7 @@ body, * {
   align-self: flex-end;
 }
 .products-container {
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 65px;
@@ -92,8 +92,9 @@ body, * {
   font-weight: 200;
 }
 .product-card{
-  display: block;
-  width: 200px;
+  display: inline-block;
+  padding: 5px;
+  width: min-content;
   cursor: pointer;
   transform: scale(1, 1);
   transition: transform 0.5s ease;
@@ -110,8 +111,6 @@ body, * {
  }
  .product-title{
    font-weight: 500;
-   width: fit-content;
-   block-size: fit-content;
  }
  .product-price{
    font-weight: 400;
@@ -364,4 +363,20 @@ body, * {
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
+}
+.more-images-container{
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+.more-image{
+  border-radius: 8px;
+  background-color: #ebebeb;
+  width: 100px;
+  height: 80px;
+  cursor: pointer;
+}
+
+.selected-image{
+  background-color:#f02d34;
 }
