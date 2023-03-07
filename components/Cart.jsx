@@ -17,7 +17,7 @@ const Cart = () => {
             <button type='button' className='cart-heading' onClick={() => setShowCart(false)}>
                 <AiOutlineLeft />
                 <span className='heading'>Your Cart</span>
-                <span className='number-of-items'>{totalQuantities}</span>
+                <span className='number-of-items'>({totalQuantities} items)</span>
             </button>
         </div>
     </div>
