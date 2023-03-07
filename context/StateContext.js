@@ -11,10 +11,13 @@ export const StateContext = ({ children }) => {
     const [quantity, setQuantity] = useState(1);
 
     const increaseQuantity = () => {
-        setQuantity((prvQty) => prvQty + 1)  
+        setQuantity((qty) => qty + 1)  
     }
     const decreaseQuantity = () => {
-        setQuantity((prvQty) => prvQty - 1)  
+        setQuantity((qty) => {
+        if(qty - 1 < 1) return 1
+        return qty - 1 
+        })
     }
 
     return (
