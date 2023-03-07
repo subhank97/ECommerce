@@ -10,6 +10,9 @@ export const StateContext = ({ children }) => {
     const [totalQuantities, setTotalQuantity] = useState(0);
     const [quantity, setQuantity] = useState(1);
 
+    let findProduct;
+    let index;
+
     const increaseQuantity = () => {
         setQuantity((qty) => qty + 1)
     }
@@ -39,10 +42,28 @@ export const StateContext = ({ children }) => {
         console.log('added to cart')
     }
 
+    const toggleCartItemQuantity = (id, value) => {
+        findProduct = cartItems.find((item) => item._id === id)
+        index = cartItems.findIndex((product) => product._id === id)
+        if (value === 'inc'){
+            findProduct.quantity += 1;
+            cartItems[index] = findProduct;
+            setTotalPrice(totalPrice + findProduct.price);
+            setTotalQuantity(totalQuantities + 1);
+        } else if (value === 'dec') {
+            if (findProduct.quantity > 1) {
+                findProduct.quantity -= 1;
+                cartItems[index] = findProduct;
+                setTotalPrice(totalPrice - findProduct.price);
+                setTotalQuantity(totalQuantities - 1);
+            }
+        }
+    }
+
     return (
         <Context.Provider value={{
             showCart, setShowCart, cartItems, totalPrice, totalQuantities, quantity, increaseQuantity,
-            decreaseQuantity, onAddToCart
+            decreaseQuantity, onAddToCart, toggleCartItemQuantity 
         }}>
             {children}
         </Context.Provider>

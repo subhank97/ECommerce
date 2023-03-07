@@ -9,7 +9,7 @@ import { urlFor } from '@/lib/client'
 const Cart = () => {
 
     const cartRef = useRef();
-    const { totalPrice, totalQuantities, cartItems, setShowCart } = useStateContext();
+    const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity } = useStateContext();
 
     return (
         <div className='cart-wrapper' ref={cartRef}>
@@ -39,9 +39,18 @@ const Cart = () => {
                                     <h5>{item.name}</h5>
                                     <h4>${item.price}</h4>
                                 </div>
-                                <button type='button' className='remove-cart-item' onClick=''>
-                                    <TiDeleteOutline />
-                                </button>
+                                <div className='flex bottom'>
+                                    <div>
+                                        <p className="quantity-detail">
+                                            <span className="minus" onClick={() => toggleCartItemQuantity(item._id, 'dec')}><AiOutlineMinus /></span>
+                                            <span className="number">{item.quantity}</span>
+                                            <span className="plus" onClick={() => toggleCartItemQuantity(item._id, 'inc')}><AiOutlinePlus /></span>
+                                        </p>
+                                    </div>
+                                    <button type='button' className='remove-cart-item' onClick=''>
+                                        <TiDeleteOutline />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     ))}
@@ -50,7 +59,7 @@ const Cart = () => {
                     <div className='cart-bottom'>
                         <div className='cart-total'>
                             <h3>Subtotal:</h3>
-                            <h3>{totalPrice}</h3>
+                            <h3>${totalPrice}</h3>
                         </div>
                         <div className='checkout-button-container'>
                             <button type='button' className='checkout-button' onClick=''>
@@ -58,7 +67,7 @@ const Cart = () => {
                             </button>
                         </div>
                     </div>
-                ) }
+                )}
             </div>
         </div>
     )
