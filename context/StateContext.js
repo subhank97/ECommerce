@@ -6,17 +6,17 @@ const Context = createContext()
 export const StateContext = ({ children }) => {
     const [showCart, setShowCart] = useState(false);
     const [cartItems, setCartItems] = useState([]);
-    const [totalPrice, setTotalPrice] = useState();
+    const [totalPrice, setTotalPrice] = useState(0);
     const [totalQuantities, setTotalQuantity] = useState(0);
     const [quantity, setQuantity] = useState(1);
 
     const increaseQuantity = () => {
-        setQuantity((qty) => qty + 1)  
+        setQuantity((qty) => qty + 1)
     }
     const decreaseQuantity = () => {
         setQuantity((qty) => {
-        if(qty - 1 < 1) return 1
-        return qty - 1 
+            if (qty - 1 < 1) return 1
+            return qty - 1
         })
     }
 
@@ -24,9 +24,9 @@ export const StateContext = ({ children }) => {
         const checkProductinCart = cartItems.find((item) => item._id === product._id)
         setTotalPrice((previousTotalPrice) => previousTotalPrice + product.price * qty)
         setTotalQuantity((previousTotalQuantity) => previousTotalQuantity + qty)
-            if(checkProductinCart) {
+        if (checkProductinCart) {
             const updatedCartItems = cartItems.map((cartProduct) => {
-                if(cartProduct._id === product._id) return {
+                if (cartProduct._id === product._id) return {
                     ...cartProduct,
                     quantity: cartProduct.qty + qty
                 }
@@ -34,16 +34,18 @@ export const StateContext = ({ children }) => {
             setCartItems(updatedCartItems);
         } else {
             product.qty = qty;
-            setCartItems([...cartItems, {...product}]);
+            setCartItems([...cartItems, { ...product }]);
         }
         console.log('added to cart')
     }
 
     return (
-        <Context.Provider value={{showCart, setShowCart, cartItems, totalPrice, totalQuantities, quantity, increaseQuantity,
-                                  decreaseQuantity, onAddToCart}}>
+        <Context.Provider value={{
+            showCart, setShowCart, cartItems, totalPrice, totalQuantities, quantity, increaseQuantity,
+            decreaseQuantity, onAddToCart
+        }}>
             {children}
         </Context.Provider>
     )
 }
-    export const useStateContext = () => useContext(Context);
+export const useStateContext = () => useContext(Context);
