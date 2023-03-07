@@ -2,13 +2,15 @@ import React, { useState } from 'react'
 import { client, urlFor } from '@/lib/client'
 import { AiFillStar, AiOutlineMinus, AiOutlinePlus, AiOutlineStar } from 'react-icons/ai';
 import { Product } from '@/components';
+import { useStateContext } from '@/context/StateContext';
 
 const ProductDetails = ({ product, products }) => {
 
     const {image, name, price, details} = product;
 
     const [index, setIndex] = useState(0)
-    console.log(product.image)
+
+    const {increaseQuantity, decreaseQuantity, quantity} = useStateContext();
 
   return (
     <div>
