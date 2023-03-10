@@ -3,14 +3,14 @@ import { Banner, FooterBanner, Product } from '../components'
 import { client } from '../lib/client'
 
 const Home = ({ products, bannerData} ) => {
-  console.log(products)
+  // console.log(products)
   return (
     <div>
       <Banner banner={bannerData[0]} />
 
       <div className='products-heading'>
-        <h2>Best Selling Shoes</h2>
-        <p>Shoes of all brands</p>
+        <h2>Best Selling</h2>
+        {/* <p>Shoes of all brands</p> */}
       </div>
 
       {/* Loop through products */}

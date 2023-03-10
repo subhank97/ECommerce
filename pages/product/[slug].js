@@ -3,12 +3,18 @@ import { client, urlFor } from '@/lib/client'
 import { AiFillStar, AiOutlineMinus, AiOutlinePlus, AiOutlineStar } from 'react-icons/ai';
 import { Product } from '@/components';
 import { useStateContext } from '@/context/StateContext';
+import Carousel from '@/components/Carousel';
 
 const ProductDetails = ({ product, products }) => {
 
   const { image, name, price, details } = product;
   const [index, setIndex] = useState(0)
-  const { increaseQuantity, decreaseQuantity, quantity, onAddToCart } = useStateContext();
+  const { increaseQuantity, decreaseQuantity, quantity, onAddToCart, setShowCart } = useStateContext();
+
+  const handleBuyNow = () => {
+    onAddToCart(product, quantity);
+    setShowCart(true);
+  }
 
   return (
     <div>
@@ -53,7 +59,7 @@ const ProductDetails = ({ product, products }) => {
           </div>
           <div className="product-buttons">
           <button type="button" className="add-to-cart" onClick={() => onAddToCart(product, quantity)}>Add to Cart</button>
-            <button type="button" className="buy-now" onClick=''>Buy Now</button>
+            <button type="button" className="buy-now" onClick={handleBuyNow}>Buy Now</button>
           </div>
         </div>
       </div>
@@ -63,7 +69,7 @@ const ProductDetails = ({ product, products }) => {
         <div className="marquee">
           <div className="maylike-products-container track">
             {products.map((item) => (
-              <Product key={item._id} product={item} />
+              <Carousel key={item._id} product={item} />
             ))}
           </div>
         </div>
