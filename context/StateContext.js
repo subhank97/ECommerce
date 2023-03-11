@@ -5,15 +5,29 @@ const Context = createContext()
 
 
 export const StateContext = ({ children }) => {
+  const getLocalStorage = (name) => {
+    if (typeof window !== 'undefined') {
+      const storage = localStorage.getItem(name);
+      if (storage) return JSON.parse(localStorage.getItem(name));
+      if (name === 'cartItems') return [];
+      return 0;
+    }
+  };
 
-    const [showCart, setShowCart] = useState(false);
-    const [cartItems, setCartItems] = useState([]);
-    const [totalPrice, setTotalPrice] = useState(0);
-    const [totalQuantities, setTotalQuantities] = useState(0);
-    const [quantity, setQuantity] = useState(1);
+  const [showCart, setShowCart] = useState(false);
+  const [cartItems, setCartItems] = useState(getLocalStorage('cartItems'));
+  const [totalPrice, setTotalPrice] = useState(getLocalStorage('totalPrice'));
+  const [totalQuantities, setTotalQuantities] = useState(getLocalStorage('totalQuantities'));
+  const [quantity, setQuantity] = useState(1);
 
-    let findProduct;
-    let index;
+  let findProduct;
+  let index;
+  
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    localStorage.setItem('totalPrice', JSON.stringify(totalPrice));
+    localStorage.setItem('totalQuantities', JSON.stringify(totalQuantities));
+  }, [cartItems, totalPrice, totalQuantities]);
 
     const increaseQuantity = () => {
         setQuantity((quantity) => quantity + 1)

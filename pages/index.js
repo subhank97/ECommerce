@@ -6,7 +6,7 @@ const Home = ({ products, bannerData} ) => {
   // console.log(products)
   return (
     <div>
-      <Banner banner={bannerData[0]} />
+      <Banner banner={bannerData.length && bannerData[0]} />
 
       <div className='products-heading'>
         <h2>Best Selling</h2>
@@ -15,9 +15,7 @@ const Home = ({ products, bannerData} ) => {
 
       {/* Loop through products */}
       <div className='products-container'>
-        {products?.map((product) => 
-        <Product key={product.id}
-                 product={product} />)}
+      {products?.map((product) => <Product key={product._id} product={product} />)}
       </div>
 
       <FooterBanner footer={bannerData[0]}/>
