@@ -6,6 +6,8 @@ const Home = ({ products, bannerData} ) => {
   // console.log(products)
   return (
     <div>
+      <div suppressHydrationWarning={true}>Ignore this</div>
+      
       <Banner banner={bannerData.length && bannerData[0]} />
 
       <div className='products-heading'>
