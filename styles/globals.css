@@ -51,13 +51,13 @@ body, * {
 .banner-container h1 {
   padding-top: 3%;
   padding-bottom: 1%;
-  color: rgb(237, 231, 52);
+  color: rgb(73, 224, 238);
   font-size: 10em;
   margin-left: -20px;
   text-transform: uppercase;
 }
 .banner-container p {
-  color: rgb(237, 231, 52);
+  color: rgb(73, 224, 238);
   font-size: 2em;
 }
 .banner-image {
