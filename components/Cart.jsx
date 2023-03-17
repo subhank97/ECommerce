@@ -8,6 +8,8 @@ import getStripe from '@/lib/getStripe'
 import toast from 'react-hot-toast'
 
 const Cart = () => {
+    const cartRef = useRef();
+    const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemoveFromCart } = useStateContext();
 
     const handleCheckout = async () => {
         const stripe = await getStripe();
@@ -17,17 +19,12 @@ const Cart = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(cartItems),
-        });
-        if(response.statusCode === 500) {
-            return;
-        }        
+        });    
+        if(response.statusCode === 500) return; 
         const data = await response.json();   
-        toast.loading('Redirecting...');  
+        toast.loading('Redirecting...');
         stripe.redirectToCheckout({ sessionId: data.id });
       }
-
-    const cartRef = useRef();
-    const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemoveFromCart } = useStateContext();
 
     return (
         <div className='cart-wrapper' ref={cartRef}>
@@ -61,7 +58,7 @@ const Cart = () => {
                                     <div>
                                         <p className="quantity-detail">
                                             <span className="minus" onClick={() => toggleCartItemQuantity(item._id, 'dec')}><AiOutlineMinus /></span>
-                                            <span className="number">{item.quantity}</span>
+                                            <span className="number">{item.qty}</span>
                                             <span className="plus" onClick={() => toggleCartItemQuantity(item._id, 'inc')}><AiOutlinePlus /></span>
                                         </p>
                                     </div>
