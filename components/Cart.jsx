@@ -8,8 +8,6 @@ import getStripe from '@/lib/getStripe'
 import toast from 'react-hot-toast'
 
 const Cart = () => {
-    const cartRef = useRef();
-    const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemoveFromCart } = useStateContext();
 
     const handleCheckout = async () => {
         const stripe = await getStripe();
@@ -19,12 +17,19 @@ const Cart = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(cartItems),
-        });    
-        if(response.statusCode === 500) return; 
-        const data = await response.json();   
+        });
+        if(response.statusCode === 500) return;
+
+        const data = await response.json();
+
         toast.loading('Redirecting...');
+        
         stripe.redirectToCheckout({ sessionId: data.id });
       }
+
+    const cartRef = useRef();
+    const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemoveFromCart } = useStateContext();
+
 
     return (
         <div className='cart-wrapper' ref={cartRef}>

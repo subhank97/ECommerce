@@ -10,16 +10,15 @@ const Banner = ({ banner }) => {
             {/* <h3>{banner.midText}</h3> */}
             <h1>{banner.largeText}</h1>
             <img src={urlFor(banner.image)} alt='shoe' className='banner-image'/>
-
-            <div>
-                {/* <Link href='/product'>
+            {/* <div>
+                <Link href='/product'>
                     <button type='button'>{banner.buttonText}</button>
-                </Link> */}
+                </Link>
                 <div className='description'>
                     <h5></h5>
                     <p></p>
                 </div>
-            </div>
+            </div> */}
         </div>
     </div>
   )

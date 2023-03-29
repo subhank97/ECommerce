@@ -15,18 +15,6 @@ const Product = ({ product: { image, name, slug, price } }) => {
             </div>
         </Link>
     </div>
-      // <section class="cardss">
-      //   <div class="images">
-      //     <img src={urlFor(image && image[0])} alt="OFF-white Red Edition" draggable="false" />
-      //   </div>
-      //   <div class="products-info">
-      //     <h2>{name}</h2>
-      //     <div class="prices">${price}</div>
-      //   </div>
-      //   <div class="btns">
-      //     <button class="buy-btns">Buy Now</button>
-      //   </div>
-      // </section>
   )
 }
 
