@@ -49,14 +49,14 @@ const Navbar = () => {
                 )}
               </a>
             </div>
-            <button className={`md:hidden ${isMenuOpen ? 'text-blue-500' : 'text-black'}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <button className={`md:hidden ${isMenuOpen ? 'text-blue-500' : 'text-white'}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
-          <div className="absolute right-0 top-0 w-[0] md:w-[0] lg:w-[517px] h-full bg-custom-rose z-0"></div>
-          <svg className="absolute right-0 h-full text-zinc-900 transform translate-x-[125px] md:translate-x-[250px] lg:translate-x-[-485px] -translate-y-0 z-0" viewBox="0 0 100 100" fill="currentColor" preserveAspectRatio="none slice">
+          <div className="absolute right-0 top-0 sm:w-[0] md:w-[0] lg:w-[517px] h-full bg-custom-rose z-0"></div>
+          <svg className="absolute right-0 h-full text-zinc-900 transform sm:translate-x-[125px] md:translate-x-[250px] lg:translate-x-[-485px] -translate-y-0 z-0" viewBox="0 0 100 100" fill="currentColor" preserveAspectRatio="none slice">
             <path d="M50 0H100L50 100H0L50 0Z"></path>
           </svg>
         </nav>

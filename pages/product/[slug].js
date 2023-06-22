@@ -58,7 +58,7 @@ const ProductDetails = ({ product, products }) => {
               </div>
             </div>
 
-            <button type="button" className="font-bold py-2.5 px-5 bg-custom-rose mt-1 text-lg font-medium text-black cursor-pointer w-48 transform transition-transform duration-500 hover:scale-110" onClick={() => onAddToCart(product, quantity)}>Add to Cart</button>
+            <button type="button" className="rounded-lg font-bold py-2.5 px-5 bg-custom-rose mt-1 text-lg font-medium text-black cursor-pointer w-48 transform transition-transform duration-500 hover:scale-110" onClick={() => onAddToCart(product, quantity)}>Add to Cart</button>
           </div>
         </div>
       </div>
