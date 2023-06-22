@@ -17,24 +17,24 @@ const ProductDetails = ({ product, products }) => {
 
   return (
     <div>
-      <div className="product-details-container">
-        <div>
-          <div className="image-container">
-            <img src={urlFor(image && image[index])} className="product-detail-image" />
+      <div className="md:flex gap-10 m-10 mt-12 text-blue-800 flex-col md:flex-row">
+        <div className='w-3/4 '>
+          <div className="pb-5 max-w-xl">
+            <img src={urlFor(image && image[index])} className="w-full h-80 max-w-full h-64 object-contain cursor-pointer transition-all duration-300" />
           </div>
-          <div className="more-images-container">
+          <div className="flex pr-14 mt-5 overflow-x-scroll">
             {image?.map((item, i) => (
-              <img key={i} src={urlFor(item)} className={i === index ? 'more-image selected-image' : 'more-image'}
-                   onMouseEnter={() => setIndex(i)}
+              <img key={i} src={urlFor(item)} className={i === index ? 'more-image selected-image w-2/12 h-2/12 object-contain ml-6 flex-shrink-0' : 'more-image w-2/12 h-2/12 ml-6 object-contain flex-shrink-0'}
+                onMouseEnter={() => setIndex(i)}
               />
             ))}
           </div>
         </div>
 
-        <div className="product-description">
-          <h1>{name}</h1>
-          <div className="product-reviews">
-            <div>
+        <div className="w-full mt-5 md:mt-0 md:ml-12">
+          <h1 className="text-4xl">{name}</h1>
+          <div className="text-xl text-orange-500 mt-2.5 gap-1 items-center">
+            <div className='flex'>
               <AiFillStar />
               <AiFillStar />
               <AiFillStar />
@@ -45,20 +45,20 @@ const ProductDetails = ({ product, products }) => {
               (20)
             </p>
           </div>
-          <h4>Details: </h4>
+          <h4 className="mt-2.5 text-sm">Details: </h4>
           <p>{details}</p>
-          <p className="product-price">${price}</p>
-          <div className="product-quantity">
+          <p className="font-bold text-5xl mt-7.5 text-red-700">${price}</p>
+          <div className="text-blue-800 flex gap-5 mt-2.5 items-center w-72">
             <h3>Quantity:</h3>
-            <p className="quantity-detail">
-              <span className="minus" onClick={decreaseQuantity}><AiOutlineMinus /></span>
-              <span className="number">{quantity}</span>
-              <span className="plus" onClick={increaseQuantity}><AiOutlinePlus /></span>
+            <p className="border border-orange-500 px-1.5">
+              <span className="text-lg px-2.5 py-1.5 cursor-pointer text-orange-300" onClick={decreaseQuantity}><AiOutlineMinus /></span>
+              <span className="border-r border-l border-orange-500 text-xl">{quantity}</span>
+              <span className="text-lg px-2.5 py-1.5 cursor-pointer text-orange-300" onClick={increaseQuantity}><AiOutlinePlus /></span>
             </p>
           </div>
-          <div className="product-buttons">
-          <button type="button" className="add-to-cart" onClick={() => onAddToCart(product, quantity)}>Add to Cart</button>
-            <button type="button" className="buy-now" onClick={handleBuyNow}>Buy Now</button>
+          <div className="flex gap-7.5">
+            <button type="button" className="py-2.5 px-5 border border-red-700 mt-10 text-lg font-medium bg-white text-red-700 cursor-pointer w-48 transform transition-transform duration-500 hover:scale-110" onClick={() => onAddToCart(product, quantity)}>Add to Cart</button>
+            <button type="button" className="w-48 py-2.5 px-5 bg-red-700 text-white border-none mt-10 text-lg font-medium cursor-pointer transform transition-transform duration-500 hover:scale-110" onClick={handleBuyNow}>Buy Now</button>
           </div>
         </div>
       </div>

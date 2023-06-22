@@ -10,9 +10,21 @@ export const StateContext = ({ children }) => {
   const [totalQuantities, setTotalQuantities] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [startIndex, setStartIndex] = useState(0);
 
   let foundProduct;
   let index;
+  const productsPerView = 6;
+
+  const shiftImages = () => {
+    setStartIndex((prevIndex) => {
+      let nextIndex = prevIndex + productsPerView;
+      if (nextIndex >= products.length) {
+        nextIndex = 0;
+      }
+      return nextIndex;
+    });
+  };
 
   const onAddToCart = (product, qty) => {
     const checkProductInCart = cartItems.find((item) => item._id === product._id);
@@ -80,7 +92,7 @@ export const StateContext = ({ children }) => {
     <Context.Provider
       value={{ showCart, setShowCart, cartItems, totalPrice, totalQuantities, quantity, increaseQuantity, 
                decreaseQuantity, onAddToCart, toggleCartItemQuanitity, onRemoveFromCart, setCartItems, 
-               setTotalPrice, setTotalQuantities, isMenuOpen, setIsMenuOpen
+               setTotalPrice, setTotalQuantities, isMenuOpen, setIsMenuOpen, shiftImages
       }}
     >
       {children}
