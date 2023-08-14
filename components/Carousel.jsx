@@ -2,17 +2,21 @@ import React from 'react'
 import Link from 'next/link'
 import { urlFor } from '@/lib/client';
 
-const Carousel = ({ product: {image, name, slug, price} }) => {
+const Carousel = ({ product: { image, name, slug, price } }) => {
     return (
-        <div>
-            <Link className='carousel-container' href={`/product/${slug.current}`}>
-                <div className='carousel-card'>
-                    <img className='carousel-image' src={urlFor(image && image[0])} alt='shoe-cover' width={190} height={100} />
-                    <p className='carousel-title'>{name}</p>
-                    <p className='carousel-price'>${price}</p>
+        <div className="px-4">
+            <Link href={`/product/${slug.current}`}>
+                <div className="flex flex-col">
+                    <div className="w-48 h-40 relative">
+                        <img className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 h-full w-full object-contain" src={urlFor(image && image[0])} alt="shoe-cover" />
+                    </div>
+
+                    <p className="text-md font-semibold h-20 pt-2">{name}</p>
+                    <p className="text-sm font-medium pt-3">${price}</p>
                 </div>
             </Link>
         </div>
+
     )
 }
 

@@ -63,16 +63,20 @@ const ProductDetails = ({ product, products }) => {
         </div>
       </div>
 
-      <div className="maylike-products-wrapper">
-        <h2>You may also like</h2>
-        <div className="marquee">
-          <div className="maylike-products-container track">
+      <div className="flex flex-col items-center pt-20">
+        <h2 className="text-2xl font-semibold mb-2">You may also like</h2>
+
+        <div className="relative overflow-hidden">
+
+          <div className="track flex space-x-4 w-screen">
             {products.map((item) => (
               <Carousel key={item._id} product={item} />
             ))}
           </div>
+
         </div>
       </div>
+
     </div>
   )
 }
