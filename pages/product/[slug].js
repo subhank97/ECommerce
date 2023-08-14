@@ -45,15 +45,15 @@ const ProductDetails = ({ product, products }) => {
           <p className="italic font-light mt-2.5 text-sm">{details}</p>
           <p className="pt-10 pb-10 font-bold text-3xl mt-7.5 text-slate-700">${price}</p>
 
-          <div class="flex gap-10"> 
-            <div class="custom-number-input h-10 w-32">
-              <div class="flex flex-row h-full w-full rounded-lg relative bg-transparent mt-1">
-                <button data-action="decrement" class="border border-black  text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
-                  <span class="m-auto text-2xl font-thin" onClick={decreaseQuantity}> - </span>
+          <div className="flex gap-10">
+            <div className="custom-number-input h-10 w-32">
+              <div className="flex flex-row h-full w-full rounded-lg relative bg-transparent mt-1">
+                <button data-action="decrement" className="border border-black  text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                  <span className="m-auto text-2xl font-thin" onClick={decreaseQuantity}> - </span>
                 </button>
-                <input class="border border-black outline-none focus:outline-none text-center w-full  font-semibold text-md md:text-basecursor-default flex items-center text-gray-700  outline-none" value={quantity} />
-                <button data-action="increment" class="border border-black  text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
-                  <span class="m-auto text-2xl font-thin" onClick={increaseQuantity}> + </span>
+                <input className="border border-black outline-none focus:outline-none text-center w-full  font-semibold text-md md:text-basecursor-default flex items-center text-gray-700  outline-none" value={quantity} />
+                <button data-action="increment" className="border border-black  text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                  <span className="m-auto text-2xl font-thin" onClick={increaseQuantity}> + </span>
                 </button>
               </div>
             </div>

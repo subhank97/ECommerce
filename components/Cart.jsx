@@ -28,11 +28,11 @@ const Cart = () => {
     }
 
     const cartRef = useRef();
-    const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemoveFromCart } = useStateContext();
+    const { totalPrice, totalQuantities, cartItems, setShowCart, onRemoveFromCart } = useStateContext();
 
 
     return (
-        <div class="relative z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+        <div class="relative z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true" ref={cartRef}>
             <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
             <div class="fixed inset-0 overflow-hidden">
                 <div class="absolute inset-0 overflow-hidden">
@@ -100,7 +100,7 @@ const Cart = () => {
 
     )
 }
-{/* <div className='cart-wrapper' ref={cartRef}>
+{/* <div className='cart-wrapper' >
 <div className='cart-container'>
     <button type='button' className='cart-heading' onClick={() => setShowCart(false)}>
         <AiOutlineLeft />

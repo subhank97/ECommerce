@@ -4,22 +4,22 @@ import { Navbar, Footer } from '.';
 
 
 const Layout = ({ children }) => {
-  return (
-    <div className='layout'>
-        <Head>
-            <title>Subi's Sneaker Shop</title>
-        </Head>
-        <header>
-            <Navbar />
-        </header>
-        <main className='main-container'>
-            {children}
-        </main>
-        <footer>
-            <Footer />
-        </footer>
-    </div>
-  )
+    return (
+        <div className='layout'>
+            <Head>
+                <title>Subi's Sneaker Shop</title>
+            </Head>
+            <header>
+                <Navbar />
+            </header>
+            <main className='main-container'>
+                {children}
+            </main>
+            <footer>
+                <Footer />
+            </footer>
+        </div>
+    )
 }
 
 export default Layout
