@@ -4,7 +4,7 @@ import { urlFor } from '@/lib/client';
 
 const Carousel = ({ product: { image, name, slug, price } }) => {
     return (
-        <div className="px-4">
+        <div className="px-8">
             <Link href={`/product/${slug.current}`}>
                 <div className="flex flex-col">
                     <div className="w-48 h-40 relative">

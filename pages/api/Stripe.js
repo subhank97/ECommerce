@@ -5,6 +5,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
+      console.log("Received items:", req.body);
+
       const params = {
         submit_type: 'pay',
         mode: 'payment',
@@ -37,12 +39,13 @@ export default async function handler(req, res) {
         success_url: `${req.headers.origin}/success`,
         cancel_url: `${req.headers.origin}/canceled`,
       }
-
+      console.log("Stripe Params:", params);
       // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create(params);
 
       res.status(200).json(session);
     } catch (err) {
+      console.error("Stripe Error:", err);
       res.status(err.statusCode || 500).json(err.message);
     }
   } else {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { client, urlFor } from '@/lib/client'
-import { AiFillStar, AiOutlineMinus, AiOutlinePlus, AiOutlineStar } from 'react-icons/ai';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { useStateContext } from '@/context/StateContext';
 import Carousel from '@/components/Carousel';
 
@@ -8,19 +8,14 @@ const ProductDetails = ({ product, products }) => {
 
   const { image, name, price, details } = product;
   const [index, setIndex] = useState(0)
-  const { increaseQuantity, decreaseQuantity, quantity, onAddToCart, setShowCart } = useStateContext();
-
-  const handleBuyNow = () => {
-    onAddToCart(product, quantity);
-    setShowCart(true);
-  }
+  const { increaseQuantity, decreaseQuantity, qty, onAddToCart } = useStateContext();
 
   return (
     <div className='lg:pt-10'>
       <div className="md:flex gap-10 m-10 mt-12 text-slate-800 flex-col md:flex-row">
         <div className='w-3/4 '>
           <div className="pb-5 max-w-xl">
-            <img src={urlFor(image && image[index])} className="w-full h-80 max-w-full h-64 object-contain cursor-pointer transition-all duration-300" />
+            <img src={urlFor(image && image[index])} className="w-full max-w-full h-80 object-contain cursor-pointer transition-all duration-300" />
           </div>
           <div className="flex pr-14 mt-5 overflow-x-scroll">
             {image?.map((item, i) => (
@@ -51,14 +46,16 @@ const ProductDetails = ({ product, products }) => {
                 <button data-action="decrement" className="border border-black  text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
                   <span className="m-auto text-2xl font-thin" onClick={decreaseQuantity}> - </span>
                 </button>
-                <input className="border border-black outline-none focus:outline-none text-center w-full  font-semibold text-md md:text-basecursor-default flex items-center text-gray-700  outline-none" value={quantity} />
+                <input readOnly className="border border-black focus:outline-none text-center w-full  font-semibold text-md md:text-basecursor-default flex items-center text-gray-700  outline-none" value={qty} />
                 <button data-action="increment" className="border border-black  text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
                   <span className="m-auto text-2xl font-thin" onClick={increaseQuantity}> + </span>
                 </button>
               </div>
             </div>
 
-            <button type="button" className="rounded-lg font-bold py-2.5 px-5 bg-custom-rose mt-1 text-lg font-medium text-black cursor-pointer w-48 transform transition-transform duration-500 hover:scale-110" onClick={() => onAddToCart(product, quantity)}>Add to Cart</button>
+            <button type="button" className="rounded-lg font-medium py-2.5 px-5 bg-custom-rose mt-1 text-lg text-black cursor-pointer w-48 transform transition-transform duration-500 hover:scale-110"
+              onClick={() => onAddToCart(product, qty)}>Add to Cart
+            </button>
           </div>
         </div>
       </div>
@@ -72,6 +69,12 @@ const ProductDetails = ({ product, products }) => {
             {products.map((item) => (
               <Carousel key={item._id} product={item} />
             ))}
+
+            {/* <div className='my-10 font-bold text-2xl'>
+              <button className="absolute left-0 top-1/2"> ← </button>
+              <button className="absolute right-0 top-1/2"> → </button>
+            </div> */}
+
           </div>
 
         </div>
